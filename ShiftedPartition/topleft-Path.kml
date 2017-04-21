@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.0">
+<!-- Processed by GE-Path -->
+<Document>
+<name>topleft-Path</name>
+  <open>1</open>
+   <LookAt>
+<longitude>-73.9859</longitude>
+<latitude>40.7745</latitude>
+<range>60200.1545368105</range>
+<tilt>0</tilt>
+<heading>0</heading>
+   </LookAt>
+   <Style id="sgrillo1">
+     <IconStyle>
+        <Icon>
+         <href>root://icons/palette-4.png</href>
+         <y>128</y>
+         <w>32</w>
+         <h>32</h>
+        </Icon>
+     </IconStyle>
+     <LabelStyle>
+       <color>ffffffff</color>
+        <scale>1</scale>
+      </LabelStyle>
+   </Style>
+<Folder>
+  <open>0</open>
+ <name>Names</name>
+<Placemark>
+     <name>1</name>
+     <description>TR</description>
+   <styleUrl>#sgrillo1</styleUrl>
+   <Point>
+   <altitudeMode>clampToGround</altitudeMode>
+      <coordinates>-73.6884, 40.9955, 0 </coordinates>
+   </Point>
+</Placemark>
+<Placemark>
+     <name>2</name>
+     <description>TL</description>
+   <styleUrl>#sgrillo1</styleUrl>
+   <Point>
+   <altitudeMode>clampToGround</altitudeMode>
+      <coordinates>-74.2834, 40.9955, 0 </coordinates>
+   </Point>
+</Placemark>
+<Placemark>
+     <name>3</name>
+     <description>BL</description>
+   <styleUrl>#sgrillo1</styleUrl>
+   <Point>
+   <altitudeMode>clampToGround</altitudeMode>
+      <coordinates>-74.2834, 40.5535, 0 </coordinates>
+   </Point>
+</Placemark>
+<Placemark>
+     <name>4</name>
+     <description>BR</description>
+   <styleUrl>#sgrillo1</styleUrl>
+   <Point>
+   <altitudeMode>clampToGround</altitudeMode>
+      <coordinates>-73.6884, 40.5535, 0 </coordinates>
+   </Point>
+</Placemark>
+</Folder>
+<Placemark>
+                          <name>Path on-off</name>
+<description>Perimeter: 123.260064 miles</description>
+   <Style>
+     <IconStyle>
+       <Icon>
+         <href>root://icons/palette-2.png</href>
+         <x>224</x>
+         <y>224</y>
+         <w>32</w>
+         <h>32</h>
+        </Icon>
+      </IconStyle>
+      <LineStyle>
+         <color>ffffffff</color>
+         <width>1.0</width>
+      </LineStyle>
+   </Style>
+  <MultiGeometry> 
+   <LineString>
+     <tessellate>1</tessellate>
+     <coordinates>
+          -73.6884,40.9955,0  -74.2834,40.9955,0  -74.2834,40.5535,0  -73.6884,40.5535,0  -73.6884,40.9955,0 
+     </coordinates>
+   </LineString>
+  </MultiGeometry> 
+</Placemark>
+<Placemark>
+                            <name>Grids on-off</name>
+   <Style>
+     <IconStyle>
+       <Icon>
+         <href>root://icons/palette-2.png</href>
+         <x>224</x>
+         <y>224</y>
+         <w>32</w>
+         <h>32</h>
+        </Icon>
+      </IconStyle>
+      <LineStyle>
+         <color>af00ffff</color>
+      </LineStyle>
+   </Style>
+   <MultiGeometry>
+   <LineString>
+     <tessellate>1</tessellate>
+     <coordinates>
+      -74.2834,40.5535,0 -74.2834,40.9955,0
+    </coordinates>
+   </LineString>
+   <LineString>
+     <tessellate>1</tessellate>
+     <coordinates>
+      -74.13465,40.5535,0 -74.13465,40.9955,0
+    </coordinates>
+   </LineString>
+   <LineString>
+     <tessellate>1</tessellate>
+     <coordinates>
+      -73.9859,40.5535,0 -73.9859,40.9955,0
+    </coordinates>
+   </LineString>
+   <LineString>
+     <tessellate>1</tessellate>
+     <coordinates>
+      -73.83715,40.5535,0 -73.83715,40.9955,0
+    </coordinates>
+   </LineString>
+   <LineString>
+     <tessellate>1</tessellate>
+     <coordinates>
+      -73.6884,40.5535,0 -73.6884,40.9955,0
+    </coordinates>
+   </LineString>
+   <LineString>
+     <tessellate>1</tessellate>
+       <coordinates>
+      -74.2834,40.5535,0 -73.6884,40.5535,0
+     </coordinates>
+    </LineString>
+   <LineString>
+     <tessellate>1</tessellate>
+       <coordinates>
+      -74.2834,40.664,0 -73.6884,40.664,0
+     </coordinates>
+    </LineString>
+   <LineString>
+     <tessellate>1</tessellate>
+       <coordinates>
+      -74.2834,40.7745,0 -73.6884,40.7745,0
+     </coordinates>
+    </LineString>
+   <LineString>
+     <tessellate>1</tessellate>
+       <coordinates>
+      -74.2834,40.885,0 -73.6884,40.885,0
+     </coordinates>
+    </LineString>
+   <LineString>
+     <tessellate>1</tessellate>
+       <coordinates>
+      -74.2834,40.9955,0 -73.6884,40.9955,0
+     </coordinates>
+    </LineString>
+</MultiGeometry>
+</Placemark>
+</Document>
+</kml>
