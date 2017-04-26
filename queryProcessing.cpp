@@ -52,8 +52,8 @@ void applyRecommendationAlgo(vector<selectedPOI> POIs, int k)
     cout << "In increasing order of distance, they are at a distance of :" << endl;
     for(i = 0; i < resultSize; i++)
     {
-      cout << setprecision(15) << unique[i].utility.coordinate.latitude << " " << setprecision(15) << unique[i].utility.coordinate.longitude << " ";
-      cout << setprecision(15) << unique[i].distance << "km" << endl;
+      cout << setprecision(8) << unique[i].utility.coordinate.latitude << " " << setprecision(8) << unique[i].utility.coordinate.longitude << " ";
+      cout << setprecision(8) << unique[i].distance << "km" << endl;
     }
 }
 
@@ -67,7 +67,7 @@ void writeCoordinatesToFile(vector <selectedPOI> &wantedPOI)
     wantedPOISize = wantedPOI.size();
     for(i = 0; i < wantedPOISize; i++)
     {
-        fout << wantedPOI[i].utility.coordinate.latitude << "," << wantedPOI[i].utility.coordinate.longitude << endl;
+        fout << setprecision(8) << wantedPOI[i].utility.coordinate.latitude << "," << setprecision(8) << wantedPOI[i].utility.coordinate.longitude << endl;
         //cout << wantedPOI[i].utility.coordinate.latitude << "," << wantedPOI[i].utility.coordinate.longitude << endl;
     }
 
@@ -81,7 +81,7 @@ void writeUserCoordinatesToFile(Point userLocation)
 {
     ofstream fo;
     fo.open("userpoint.txt", ios::trunc);
-    fo << userLocation.latitude << "," << userLocation.longitude << endl;
+    fo << setprecision(8) << userLocation.latitude << "," << setprecision(8) << userLocation.longitude << endl;
     fo.close();
 }
 
@@ -126,24 +126,24 @@ Map locateUserPartition(Point userLocation, vector<Map>& grid)
 // Finds the relevant POIs for the user in the partition
 vector<selectedPOI> findPOIs(Map partition, string POICategory)
 {
-  // int i;
-  //  vector<selectedPOI> foundPOIs;
-  //  selectedPOI temp;
-  //
-  // int n = partition.noOfPOIs;
-  // int count = 0;
-  // for(i = 0; i < n; i++)
-  // {
-  //     if(partition.utility[i].utilities == POICategory)
-  //     {
-  //         temp.utility = partition.utility[i];
-  //         count++;
-  //         temp.distance = -1;
-  //         foundPOIs.push_back(temp);
-  //     }
-  // }
-  // return foundPOIs;
-    vector<selectedPOI> foundPOIs;
+   int i;
+   vector<selectedPOI> foundPOIs;
+   selectedPOI temp;
+
+  int n = partition.noOfPOIs;
+  int count = 0;
+  for(i = 0; i < n; i++)
+  {
+      if(partition.utility[i].utilities == POICategory)
+      {
+          temp.utility = partition.utility[i];
+          count++;
+          temp.distance = -1;
+          foundPOIs.push_back(temp);
+      }
+  }
+   return foundPOIs;
+  /*  vector<selectedPOI> foundPOIs;
     int comparision, mid, low, high, tempPos, stopBinarySearchFlag;
     selectedPOI temp;
     low = 0;
@@ -192,7 +192,7 @@ vector<selectedPOI> findPOIs(Map partition, string POICategory)
      }
     //Added since error was occuring "non-return type error".
     //cout << "reached end" << endl;
-    return foundPOIs;
+    return foundPOIs;*/
 }
 
 
@@ -223,8 +223,8 @@ void addPOIs(Map partition, vector<selectedPOI>& POIs, string POICategory, Point
         for(l = prev; l < userPOIsSize; l++)
             userPOIs[l].distance = distance[tempPos++];
 
-         for(i = 0; i < userPOIsSize; i++)
-             cout << userPOIs[i].distance << endl;
+         /*for(i = 0; i < userPOIsSize; i++)
+             cout << userPOIs[i].distance << endl;*/
         POIs.insert(POIs.end(), userPOIs.begin(), userPOIs.end());
 }
 
@@ -326,7 +326,7 @@ void originalGrid_recommendation(Point userLocation, string POICategory, vector<
 {
     Map userPartition;
     vector<selectedPOI> POIs;
-    
+
      userPartition = locateUserPartition(userLocation, originalGrid);
      if(userPartition.noOfPOIs > 0)
             addPOIs(userPartition, POIs, POICategory, userLocation);

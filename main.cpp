@@ -150,7 +150,7 @@ int main()
     cout << "Preprocessing complete. Waiting for query..." << endl;
     userLocation.latitude = getRandom(TOP_LEFT_LAT - LATITUDE_RANGE, TOP_LEFT_LAT);
     userLocation.longitude = getRandom(TOP_LEFT_LONG, TOP_LEFT_LONG + LONGITUDE_RANGE);
-
+    //cout << "user lacation" << setprecision(10) << userLocation.latitude <<  " " << setprecision(10) << userLocation.longitude << endl;
     cout << "Enter the POI category" << endl;
     cin.ignore();
     getline(cin, POICategory);
