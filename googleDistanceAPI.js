@@ -59,7 +59,8 @@ fs1.readFile('userpoint.txt', 'utf8', function(err, data) {
             // console.log(origins);
 
             https.get({
-                    API_KEY: 'AIzaSyDkdfuoEkhFUfWd5B5tuFZ--JcXYzQv098',
+
+                    API_KEY: 'AIzaSyBViZf6hW-3p1rxKOo6dGjzckJrQ5LTXAQ',
                     host: 'maps.googleapis.com',
                     path: '/maps/api/distancematrix/json?units=' + units + '&' + 'origins=' + originUrl + '&destinations=' + destinationUrl
                         // path: '/maps/api/distancematrix/json?origins=Vancouver+BC|Seattle&destinations=San+Francisco|Victoria+BC&mode=bicycling&language=fr-FR&key=AIzaSyAaMeRFOJn341xS5r4jskYaWH-Yw9qtoiQ'

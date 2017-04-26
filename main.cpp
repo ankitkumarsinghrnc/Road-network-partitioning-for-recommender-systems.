@@ -1,5 +1,4 @@
 #include <iostream>
-#include <time.h>
 #include <math.h>
 #include <algorithm>
 #include <stdlib.h>
@@ -42,6 +41,9 @@ Map get_brute_force_partition(vector<Data> dataRow)
     unPartitioned.utility = new Data[unPartitioned.noOfPOIs];
     copy(dataRow.begin(), dataRow.end(), &unPartitioned.utility[0]);
     sort(unPartitioned.utility, unPartitioned.utility + unPartitioned.noOfPOIs, comparePOI);
+
+    /*for(int i = 0; i < unPartitioned.noOfPOIs; i++)
+        cout << unPartitioned.utility[i].utilities << endl;*/
     //unPartitioned.utility = &dataRow[0];
 
     return unPartitioned;
@@ -148,9 +150,14 @@ int main()
 
     // Enter the query
     cout << "Preprocessing complete. Waiting for query..." << endl;
-    userLocation.latitude = getRandom(TOP_LEFT_LAT - LATITUDE_RANGE, TOP_LEFT_LAT);
-    userLocation.longitude = getRandom(TOP_LEFT_LONG, TOP_LEFT_LONG + LONGITUDE_RANGE);
-    //cout << "user lacation" << setprecision(10) << userLocation.latitude <<  " " << setprecision(10) << userLocation.longitude << endl;
+    cin >> userLocation.latitude;
+    cin >> userLocation.longitude;
+    // userLocation.latitude = getRandom(TOP_LEFT_LAT - LATITUDE_RANGE, TOP_LEFT_LAT);
+    // userLocation.longitude = getRandom(TOP_LEFT_LONG, TOP_LEFT_LONG + LONGITUDE_RANGE);
+
+    cout << "User coordinates: ";
+    cout << setprecision(10) << userLocation.latitude << setprecision(10) << userLocation.longitude << endl;
+
     cout << "Enter the POI category" << endl;
     cin.ignore();
     getline(cin, POICategory);
