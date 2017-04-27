@@ -258,7 +258,7 @@ void addPOIs(Map partition, vector<selectedPOI>& POIs, string POICategory, Point
 {
     int prev, j = 0, l, tempPos, i, diffSize, userPOIsSize;
     vector<selectedPOI> userPOIs = findPOIs(partition, POICategory);
-    
+
     // vector<selectedPOI> diff;
     // sort(userPOIs.begin(), userPOIs.end());
     // sort(POIs.begin(), POIs.end());
@@ -393,7 +393,7 @@ void find_K_NearestPOIs(Point userLocation, vector<Map> &originalGrid,  vector<M
       if(i != 0)
         previousPartition.push_back(acceptedPartitions[i-1]);
 
-      addPOIs(acceptedPartitions[i], POIs, POICategory, userLocation, previousPartitions);
+      addPOIs(acceptedPartitions[i], POIs, POICategory, userLocation);
     }
 
 
