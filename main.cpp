@@ -161,6 +161,8 @@ int main()
     cout << setprecision(10) << userLocation.latitude << setprecision(10) << userLocation.longitude << endl;;
 
     cout << "Enter the POI category" << endl;
+    //cin >> POICategory;
+
     cin.ignore();
     getline(cin, POICategory);
     cout << "Enter the no. of POIs wanted." << endl;

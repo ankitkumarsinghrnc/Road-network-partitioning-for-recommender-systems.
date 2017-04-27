@@ -46,13 +46,6 @@ bool operator<(const selectedPOI& a, const selectedPOI& b)
 }
 
 
-// // Equality function
-// bool operator=(selectedPOI a, selectedPOI b)
-// {
-//     return a.utility.coordinate.longitude == b.utility.coordinate.longitude && a.utility.coordinate.latitude < b.utility.coordinate.latitude;
-// }
-
-
 void applyRecommendationAlgo(vector<selectedPOI> POIs, int k)
 {
     int i, resultSize;
@@ -261,12 +254,12 @@ void addPOIs(Map partition, vector<selectedPOI>& POIs, string POICategory, Point
 {
     int prev, j = 0, l, tempPos, i, diffSize, userPOIsSize;
     vector<selectedPOI> userPOIs = findPOIs(partition, POICategory);
-    
+
     vector<selectedPOI> diff;
     sort(userPOIs.begin(), userPOIs.end());
     //sort(POIs.begin(), POIs.end());  Not sure whether to execute this or not
     set_difference(userPOIs.begin(), userPOIs.end(), POIs.begin(), POIs.end(), inserter(diff, diff.end()));
-    
+
     // cout << "Printing diff" << endl << endl;
     // for(i = 0; i < (int) diff.size(); i++)
     //     cout << diff[i].utility.utilities << endl;
@@ -361,6 +354,7 @@ bool satisfiesBoundaryCase(Point userLocation, Map initialPartition)
 
     return hasRightBoundaryCase | hasLeftBoundaryCase | hasTopBoundaryCase | hasBottomBoundaryCase;
 }
+
 
 // Function to check if a user satisfies the middle case or not
 bool satisfiesMiddleCase(Point userLocation, Map initialPartition, int totalPartitionInRow)
