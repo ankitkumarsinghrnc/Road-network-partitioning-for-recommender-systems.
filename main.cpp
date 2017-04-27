@@ -165,13 +165,13 @@ int main()
     cin >> k;
 
     t1 = clock();
-    //brute_force(userLocation, POICategory, unpartitioned, k);
+    brute_force(userLocation, POICategory, unpartitioned, k);
     t1 = clock() - t1;
     time_taken1 = ((double)t1) / CLOCKS_PER_SEC;
     cout << "Time taken by brute force: " << time_taken1<< endl;
 
     t2 = clock();
-    find_K_NearestPOIs(userLocation,initialPartition_vec, topLeftShifted_vec, topRightShifted_vec, bottomLeftShifted_vec, bottomRightShifted_vec, k, POICategory);
+    //find_K_NearestPOIs(userLocation,initialPartition_vec, topLeftShifted_vec, topRightShifted_vec, bottomLeftShifted_vec, bottomRightShifted_vec, k, POICategory);
     t2 = clock() - t2;
     time_taken2 = ((double)t2) / CLOCKS_PER_SEC;
     cout << "Time taken by the entire recommendation algorithm: " << time_taken2 << endl;

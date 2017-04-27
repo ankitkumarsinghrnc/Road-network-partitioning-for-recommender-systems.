@@ -3,6 +3,8 @@
 #include <cmath>
 #include <string>
 #include <fstream>
+#include <chrono>
+#include <thread>
 #include <algorithm>
 #include <set>
 #include <iomanip>
@@ -254,7 +256,17 @@ void addPOIs(Map partition, vector<selectedPOI>& POIs, string POICategory, Point
         while(j < userPOIsSize)
         {
             vector<selectedPOI> temp (userPOIs.begin() + prev, userPOIs.begin() + j);
-            vector<double> distance = get_distance(temp, userLocation);
+            std::vector<int> uniqueTemp;
+            vector <int> :: iterator it;
+            uniqueTemp.clear();
+            // it.clear();
+
+            uniqueTemp.clear();
+
+            it = std::set_difference (previousPartition.begin(), previousPartition.end(), temp.begin(), temp.end());
+            uniqueTemp.resize(it-uniqueTemp.begin());
+
+            vector<double> distance = get_distance(uniqueTemp, userLocation);
             tempPos = 0;
              for(l = prev; l < j; l++)
                 userPOIs[l].distance = distance[tempPos++];
@@ -264,7 +276,16 @@ void addPOIs(Map partition, vector<selectedPOI>& POIs, string POICategory, Point
         }
 
         vector<selectedPOI> temp (userPOIs.begin() + prev, userPOIs.end());
-        vector<double> distance = get_distance(temp, userLocation);
+        //std::this_thread::sleep_for (std::chrono::seconds(5));
+
+        uniqueTemp.clear();
+        // it.clear();
+        it = std::set_intersection(previousPartition.begin(), previousPartition.end(),
+                              temp.begin(), temp.end());
+
+        uniqueTemp.resize(it-uniqueTemp);
+
+        vector<double> distance = get_distance(uniqueTemp, userLocation);
         tempPos = 0;
         for(l = prev; l < userPOIsSize; l++)
             userPOIs[l].distance = distance[tempPos++];
@@ -281,7 +302,6 @@ bool satisfiesBoundaryCase(Point userLocation, Map initialPartition)
     double latBoundaryRange, longBoundaryRange;
     bool hasRightBoundaryCase, hasLeftBoundaryCase, hasTopBoundaryCase, hasBottomBoundaryCase;
     Point temp;
-
     // The range within which the user lies within the boundary.
     // Separate for latitude and longitude because they are not exactly equal.
     latBoundaryRange = distanceEarth(initialPartition.p_id.top_left, initialPartition.p_id.bottom_left) * BOUNDARY_RANGE;
@@ -312,6 +332,7 @@ void find_K_NearestPOIs(Point userLocation, vector<Map> &originalGrid,  vector<M
     int  i, acceptedPartitionSize, rejectedPartitionSize, poiSize;
     Map userPartitions[MAX_PARTITIONS];
     vector<Map> acceptedPartitions, rejectedPartitions;
+    vector<Map> previousPartition;
     vector<selectedPOI> POIs;
 
     userPartitions[0] = locateUserPartition(userLocation, originalGrid);
@@ -330,13 +351,18 @@ void find_K_NearestPOIs(Point userLocation, vector<Map> &originalGrid,  vector<M
                 acceptedPartitions.push_back(userPartitions[i]);
         }
     }
-
     // Find POIs in accepted partitions
     acceptedPartitionSize = acceptedPartitions.size();
     rejectedPartitionSize = rejectedPartitions.size();
 
     for(i = 0; i < acceptedPartitionSize; i++)
-        addPOIs(acceptedPartitions[i], POIs, POICategory, userLocation);
+    {
+      if(i != 0)
+        previousPartition.push_back(acceptedPartitions[i-1]);
+
+      addPOIs(acceptedPartitions[i], POIs, POICategory, userLocation, previousPartitions);
+    }
+
 
     // If we do not have enough k then go in rejectedPartitions
     poiSize = POIs.size();
@@ -344,6 +370,9 @@ void find_K_NearestPOIs(Point userLocation, vector<Map> &originalGrid,  vector<M
     {
         for(i = 0; i < rejectedPartitionSize; i++)
         {
+          if(i != 0)
+            previousPartition.push_back(rejectedPartitions[i-1]);
+
             addPOIs(rejectedPartitions[i], POIs, POICategory, userLocation);
             poiSize = POIs.size();
 
@@ -361,7 +390,6 @@ void find_K_NearestPOIs(Point userLocation, vector<Map> &originalGrid,  vector<M
 void brute_force(Point userLocation, string POICategory, Map unPartitioned, int k)
 {
     vector<selectedPOI> POIs;
-
     addPOIs(unPartitioned, POIs, POICategory, userLocation);
     cout << endl << "Brute force recommendations" << endl;
     applyRecommendationAlgo(POIs, k);
