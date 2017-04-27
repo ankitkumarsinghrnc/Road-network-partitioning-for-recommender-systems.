@@ -11,6 +11,9 @@ var start = 0;
 var destinations = [];
 var originUrl = [];
 //reading origin from file where exactly the user lies.
+
+
+
 fs1.readFile('userpoint.txt', 'utf8', function(err, data) {
 
     if (err) {
@@ -59,10 +62,9 @@ fs1.readFile('userpoint.txt', 'utf8', function(err, data) {
             // console.log(origins);
 
             https.get({
-
-                    API_KEY: 'AIzaSyBViZf6hW-3p1rxKOo6dGjzckJrQ5LTXAQ',
+                    API_KEY: 'AIzaSyD5JGtB2D_pD2-ZbVtU8x2VPRaoH_MwoME',
                     host: 'maps.googleapis.com',
-                    path: '/maps/api/distancematrix/json?units=' + units + '&' + 'origins=' + originUrl + '&destinations=' + destinationUrl
+                    path: '/maps/api/distancematrix/json?v=3.27&units=' + units + '&' + 'origins=' + originUrl + '&destinations=' + destinationUrl
                         // path: '/maps/api/distancematrix/json?origins=Vancouver+BC|Seattle&destinations=San+Francisco|Victoria+BC&mode=bicycling&language=fr-FR&key=AIzaSyAaMeRFOJn341xS5r4jskYaWH-Yw9qtoiQ'
                 }, function(response) {
                     // Continuously update stream with data
@@ -82,7 +84,7 @@ fs1.readFile('userpoint.txt', 'utf8', function(err, data) {
                             if (distanceObj[i].status == 'OK')
                                 resultStr += distanceObj[i].distance.text + '\n';
                             else
-                                resultStr += "-1 km \n";
+                                resultStr += "-99km \n";
                         }
 
                         fs.writeFile("distances.txt", resultStr, function(err, data) {

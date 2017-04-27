@@ -156,7 +156,7 @@ int main()
     // userLocation.longitude = getRandom(TOP_LEFT_LONG, TOP_LEFT_LONG + LONGITUDE_RANGE);
 
     cout << "User coordinates: ";
-    cout << setprecision(10) << userLocation.latitude << setprecision(10) << userLocation.longitude << endl;
+    cout << setprecision(10) << userLocation.latitude << " " << setprecision(10) << userLocation.longitude << endl;
 
     cout << "Enter the POI category" << endl;
     cin.ignore();
@@ -165,7 +165,7 @@ int main()
     cin >> k;
 
     t1 = clock();
-    brute_force(userLocation, POICategory, unpartitioned, k);
+    //brute_force(userLocation, POICategory, unpartitioned, k);
     t1 = clock() - t1;
     time_taken1 = ((double)t1) / CLOCKS_PER_SEC;
     cout << "Time taken by brute force: " << time_taken1<< endl;
@@ -177,7 +177,7 @@ int main()
     cout << "Time taken by the entire recommendation algorithm: " << time_taken2 << endl;
 
     t3 = clock();
-    originalGrid_recommendation(userLocation, POICategory, initialPartition_vec, k);
+    //originalGrid_recommendation(userLocation, POICategory, initialPartition_vec, k);
     t3 = clock() - t3;
     time_taken3 = ((double)t3) / CLOCKS_PER_SEC;
     cout << "Time taken by the initial partition:  " << time_taken3 << endl;

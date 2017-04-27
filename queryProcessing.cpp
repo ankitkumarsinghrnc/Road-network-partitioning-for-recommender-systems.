@@ -14,7 +14,6 @@
 
 using namespace std;
 
-
 typedef struct POIforUser
 {
     Data utility;
@@ -126,6 +125,7 @@ vector<selectedPOI> findPOIs(Map partition, string POICategory)
 {
    int i;
    vector<selectedPOI> foundPOIs;
+   selectedPOI temp;
   int n = partition.noOfPOIs;
   int count = 0;
   for(i = 0; i < n; i++)
