@@ -152,11 +152,11 @@ int main()
     cout << "Preprocessing complete. Waiting for query..." << endl;
     cin >> userLocation.latitude;
     cin >> userLocation.longitude;
-    // userLocation.latitude = getRandom(TOP_LEFT_LAT - LATITUDE_RANGE, TOP_LEFT_LAT);
-    // userLocation.longitude = getRandom(TOP_LEFT_LONG, TOP_LEFT_LONG + LONGITUDE_RANGE);
 
+    //userLocation.latitude = getRandom(TOP_LEFT_LAT - LATITUDE_RANGE, TOP_LEFT_LAT);
+    //userLocation.longitude = getRandom(TOP_LEFT_LONG, TOP_LEFT_LONG + LONGITUDE_RANGE);
     cout << "User coordinates: ";
-    cout << setprecision(10) << userLocation.latitude << " " << setprecision(10) << userLocation.longitude << endl;
+    cout << setprecision(10) << userLocation.latitude << setprecision(10) << userLocation.longitude << endl;;
 
     cout << "Enter the POI category" << endl;
     cin.ignore();
