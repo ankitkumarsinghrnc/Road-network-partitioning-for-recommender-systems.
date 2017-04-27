@@ -62,8 +62,7 @@ fs1.readFile('userpoint.txt', 'utf8', function(err, data) {
             // console.log(origins);
 
             https.get({
-
-                    API_KEY: 'AIzaSyDXPgCI7rW5IzxcoihXwHYPxPnwze35jU4',
+                    API_KEY: 'AIzaSyBUxU28bt1Tln_cm2sfiaC_qCIvt24-_tg',
                     host: 'maps.googleapis.com',
                     path: '/maps/api/distancematrix/json?v=3.27&units=' + units + '&' + 'origins=' + originUrl + '&destinations=' + destinationUrl
                         // path: '/maps/api/distancematrix/json?origins=Vancouver+BC|Seattle&destinations=San+Francisco|Victoria+BC&mode=bicycling&language=fr-FR&key=AIzaSyAaMeRFOJn341xS5r4jskYaWH-Yw9qtoiQ'
@@ -86,7 +85,7 @@ fs1.readFile('userpoint.txt', 'utf8', function(err, data) {
                             if (distanceObj[i].status == 'OK')
                                 resultStr += distanceObj[i].distance.text + '\n';
                             else
-                                resultStr += "-99km \n";
+                                resultStr += "-99 km \n";
                         }
 
                         fs.writeFile("distances.txt", resultStr, function(err, data) {
